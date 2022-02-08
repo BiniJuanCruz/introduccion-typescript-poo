@@ -1,3 +1,5 @@
+"use strict";
+exports.__esModule = true;
 // Clase (Modelo del Objeto)
 var Camiseta = /** @class */ (function () {
     //Metodos (funciones o acciones del objeto)
@@ -17,6 +19,7 @@ var Camiseta = /** @class */ (function () {
     };
     return Camiseta;
 }());
+exports.Camiseta = Camiseta;
 // instanciar un objeto
 var camiseta = new Camiseta("rojo", "manga larga", "nike", "L", 14);
 camiseta.setColor("rojo");
