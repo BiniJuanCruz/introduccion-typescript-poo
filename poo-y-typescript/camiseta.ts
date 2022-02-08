@@ -1,6 +1,11 @@
+// Interface ("contrato" que debe cumplir la clase)
+interface CamisetaBase{
+    setColor(color);
+    getColor();
+}
 
 // Clase (Modelo del Objeto)
-export class Camiseta{
+export class Camiseta implements CamisetaBase{
     // Propiedades (Caracteristicas del objeto)
     private color: string;
     private modelo: string;
