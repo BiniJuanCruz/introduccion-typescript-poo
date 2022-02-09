@@ -5,7 +5,7 @@ interface CamisetaBase{
 }
 
 // Clase (Modelo del Objeto)
-export class Camiseta implements CamisetaBase{
+class Camiseta implements CamisetaBase{
     // Propiedades (Caracteristicas del objeto)
     private color: string;
     private modelo: string;
@@ -45,3 +45,20 @@ camiseta.modelo = "manga larga";
 camiseta.marca = "Nike";
 camiseta.talla = "L";
 camiseta.precio = 10;*/
+
+class Sudadera extends Camiseta{
+    public capucha: boolean;
+
+    setCapucha(capucha: boolean){
+        this.capucha = capucha;
+    }
+    getCapucha():boolean{
+        return this.capucha;
+    }
+}
+
+var sudadera_nike = new Sudadera("verde","sudadera","nike","L",148);
+sudadera_nike.setCapucha(true);
+var capucha = sudadera_nike.getCapucha();
+console.log("Capucha: "+ capucha);
+console.log(sudadera_nike);
