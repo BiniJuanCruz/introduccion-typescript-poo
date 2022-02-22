@@ -12,7 +12,7 @@ function estampar(logo:string){
         }
     }
 }
-
+@estampar("Nike")
 class Camiseta implements CamisetaInterface {
     
     public color: string;
