@@ -1,64 +1,49 @@
-// Interface ("contrato" que debe cumplir la clase)
-interface CamisetaBase{
-    setColor(color);
-    getColor();
+interface CamisetaInterface{
+    color: string,
+    talle: string,
+    modelo: string,
+    precio: number,
+    getModelo(): void;
+}
+function estampar(logo:string){
+    return function(target: Function){
+        target.prototype.estampado = function():void{
+            console.log("Camiseta Estampada con el logo de: " + logo);
+        }
+    }
 }
 
-// Clase (Modelo del Objeto)
-class Camiseta implements CamisetaBase{
-    // Propiedades (Caracteristicas del objeto)
-    private color: string;
-    private modelo: string;
-    private marca: string;
-    private talla: string;
-    private precio: number;
+class Camiseta implements CamisetaInterface {
     
-    //Metodos (funciones o acciones del objeto)
+    public color: string;
+    public talle: string;
+    public modelo: string;
+    public precio: number;
 
-    //Metodo constructor
-    constructor(color,modelo,marca,talla,precio){
-        this.color = color;
+    constructor(color: string,talle: string,modelo: string,precio: number){
+        this.color = color,
+        this.talle = talle,
+        this.modelo = modelo,
+        this.precio = precio
+    }
+
+    getModelo(): string{
+        return this.modelo;
+    }
+    setModelo(modelo: string){
         this.modelo = modelo;
-        this.marca = marca;
-        this.talla = talla;
-        this.precio = precio;
-    }
-
-    public setColor(color){
-        this.color = color;
-    }
-    public getColor(){
-        return this.color;
     }
 }
-
-// instanciar un objeto
-
-var camiseta = new Camiseta("rojo","manga larga","nike","L",14);
-camiseta.setColor("rojo");
-console.log(camiseta.getColor());
-
-// asignarle propiedades si fueran public
-
-/*camiseta.color = "rojo";
-camiseta.modelo = "manga larga";
-camiseta.marca = "Nike";
-camiseta.talla = "L";
-camiseta.precio = 10;*/
-
-class Sudadera extends Camiseta{
-    public capucha: boolean;
-
-    setCapucha(capucha: boolean){
+class Sudadera extends Camiseta {
+    public capucha: boolean
+    constructor(capucha: boolean,color: string,talle: string,modelo: string,precio: number){
+        super(color,talle,modelo,precio)
         this.capucha = capucha;
     }
-    getCapucha():boolean{
-        return this.capucha;
-    }
 }
 
-var sudadera_nike = new Sudadera("verde","sudadera","nike","L",148);
-sudadera_nike.setCapucha(true);
-var capucha = sudadera_nike.getCapucha();
-console.log("Capucha: "+ capucha);
-console.log(sudadera_nike);
+let sudadera = new Sudadera(true, "rosa", "l", "nike2.0", 5000);
+
+console.log(sudadera.getModelo());
+sudadera.setModelo("Fila420")
+console.log(sudadera.getModelo())

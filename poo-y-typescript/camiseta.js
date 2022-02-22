@@ -11,50 +11,38 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-// Clase (Modelo del Objeto)
-var Camiseta = /** @class */ (function () {
-    //Metodos (funciones o acciones del objeto)
-    //Metodo constructor
-    function Camiseta(color, modelo, marca, talla, precio) {
-        this.color = color;
-        this.modelo = modelo;
-        this.marca = marca;
-        this.talla = talla;
-        this.precio = precio;
-    }
-    Camiseta.prototype.setColor = function (color) {
-        this.color = color;
+function estampar(logo) {
+    return function (target) {
+        target.prototype.estampado = function () {
+            console.log("Camiseta Estampada con el logo de: " + logo);
+        };
     };
-    Camiseta.prototype.getColor = function () {
-        return this.color;
+}
+var Camiseta = /** @class */ (function () {
+    function Camiseta(color, talle, modelo, precio) {
+        this.color = color,
+            this.talle = talle,
+            this.modelo = modelo,
+            this.precio = precio;
+    }
+    Camiseta.prototype.getModelo = function () {
+        return this.modelo;
+    };
+    Camiseta.prototype.setModelo = function (modelo) {
+        this.modelo = modelo;
     };
     return Camiseta;
 }());
-// instanciar un objeto
-var camiseta = new Camiseta("rojo", "manga larga", "nike", "L", 14);
-camiseta.setColor("rojo");
-console.log(camiseta.getColor());
-// asignarle propiedades si fueran public
-/*camiseta.color = "rojo";
-camiseta.modelo = "manga larga";
-camiseta.marca = "Nike";
-camiseta.talla = "L";
-camiseta.precio = 10;*/
 var Sudadera = /** @class */ (function (_super) {
     __extends(Sudadera, _super);
-    function Sudadera() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Sudadera(capucha, color, talle, modelo, precio) {
+        var _this = _super.call(this, color, talle, modelo, precio) || this;
+        _this.capucha = capucha;
+        return _this;
     }
-    Sudadera.prototype.setCapucha = function (capucha) {
-        this.capucha = capucha;
-    };
-    Sudadera.prototype.getCapucha = function () {
-        return this.capucha;
-    };
     return Sudadera;
 }(Camiseta));
-var sudadera_nike = new Sudadera("verde", "sudadera", "nike", "L", 148);
-sudadera_nike.setCapucha(true);
-var capucha = sudadera_nike.getCapucha();
-console.log("Capucha: " + capucha);
-console.log(sudadera_nike);
+var sudadera = new Sudadera(true, "rosa", "l", "nike2.0", 5000);
+console.log(sudadera.getModelo());
+sudadera.setModelo("Fila420");
+console.log(sudadera.getModelo());
